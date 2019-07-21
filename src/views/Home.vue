@@ -90,51 +90,11 @@ export default {
 
 .wrapper {
   position: absolute;
-  background-color: blue;
   top: 18%;
   width: 100%;
   height: fit-content;
   z-index: 1999;
  
- @media screen and (max-width: 768px) {
-  margin: 0;
-  padding: 0;
- }
-
-}
-.image-card-grid {
-  justify-content: center;
-  background-color: red;
-  width: 100%;
-  height: fit-content;
-  list-style-type: none;
-  margin:  0;
-  padding: 0;
-  height: fit-content;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(36, 3%);
-  row-gap: 0;
-
-  li:nth-of-type(1) {
-    grid-row: 1/ 15;
-  }
-  li:nth-of-type(2) {
-    grid-row: 1/ 22;
-  }
-  li:nth-of-type(3) {
-    grid-row: 1/ 16;
-  }
-  li:nth-of-type(4) {
-    grid-row: 15/ 33;
-  }
-  li:nth-of-type(5) {
-    grid-row: 22/ 36;
-  }
-  li:nth-of-type(6) {
-    grid-row: 16/ 36;
-  }
-  
 }
 
 .divClass{

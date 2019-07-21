@@ -87,12 +87,12 @@ export default {
   z-index: 1999;
   @media only screen and (max-width: 799px) {
     max-width: 100%;
-    margin: 0 1.5rem;
+    margin: 0 0;
   }
 }
 .image-card-grid {
   justify-content: center;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   list-style: none;
   margin: 0.5rem 0;
@@ -103,7 +103,9 @@ export default {
   grid-template-rows: repeat(36, 3%);
   grid-column-gap: 20px;
   row-gap: 0;
-
+  @media only screen and (max-width: 800px){
+      grid-template-columns: repeat(3, 1fr);
+  }
   li:nth-of-type(1) {
     grid-row: 1/ 15;
   }
@@ -122,10 +124,7 @@ export default {
   li:nth-of-type(6) {
     grid-row: 16/ 36;
   }
-  @media only screen and (max-width: 799px) {
-    grid-template-columns: repeat(2, 30%);
 
-  }
 }
 
 .navbar {
