@@ -1,16 +1,27 @@
 <template>
-  <div>
-    <nav class="navbar">
-      <h2 v-if="imgLoaded">Search results for <span>"{{searchItem}}"</span></h2>
-      <h2 v-else>Searching for <span>"{{searchItem}}"</span></h2>
-
+  <div class="rootClass">
+    <nav class="navBar">
+      <h2 v-if="imgLoaded">
+        Search results for
+        <span>"{{ searchItem }}"</span>
+      </h2>
+      <h2 v-else>
+        Searching for
+        <span>"{{ searchItem }}"</span>
+      </h2>
     </nav>
     <div class="wrapper">
-      <ul class="image-card-grid">
-        <ImageCard v-for="image in images" v-on:clicked="onClickChild" @loaded="imgLoaded=true" :key="image.id" :image="image" />
+      <ul class="imageCardGrid">
+        <ImageCard
+          v-for="image in images"
+          v-on:clicked="onClickChild"
+          @loaded="imgLoaded = true"
+          :key="image.id"
+          :image="image"
+        />
       </ul>
     </div>
-    <Modal v-if="modal" @close="modal=''" :imageURL="modal"/>
+    <Modal v-if="modal" @close="modal = ''" :imageURL="modal" />
   </div>
 </template>
 
@@ -24,7 +35,7 @@ export default {
   name: "home",
   components: {
     ImageCard,
-    Modal,
+    Modal
   },
   data() {
     return {
@@ -44,8 +55,8 @@ export default {
           this.loading = false;
         });
     },
-    onClickChild(value){
-      this.modal=value;
+    onClickChild(value) {
+      this.modal = value;
     },
     fetchData(queryParam) {
       return axios({
@@ -57,7 +68,7 @@ export default {
           query: queryParam,
           page: 1,
           per_page: 6,
-          order_by: "latest",
+          order_by: "latest"
         }
       });
     }
@@ -72,30 +83,31 @@ export default {
 };
 </script>
 <style lang="scss">
-.screen-reader-only {
-  height: 1px;
-  width: 1px;
-  position: absolute;
-  left: -100000px;
+.rootClass {
+  position: relative;
+  height: 100%;
 }
 .wrapper {
+  padding: 0;
   position: absolute;
-  top: 18%;
-  margin: 0 auto;
+  top: 18vh;
+  margin: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
   height: fit-content;
   z-index: 1999;
   @media only screen and (max-width: 799px) {
     max-width: 100%;
-    margin: 0 0;
+    margin: 0;
   }
 }
-.image-card-grid {
+.imageCardGrid {
   justify-content: center;
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100%;
   list-style: none;
-  margin: 0.5rem 0;
+  margin: 12px 0;
   padding: 0;
   height: 80vh;
   display: grid;
@@ -103,9 +115,6 @@ export default {
   grid-template-rows: repeat(36, 3%);
   grid-column-gap: 20px;
   row-gap: 0;
-  @media only screen and (max-width: 800px){
-      grid-template-columns: repeat(3, 1fr);
-  }
   li:nth-of-type(1) {
     grid-row: 1/ 15;
   }
@@ -125,26 +134,74 @@ export default {
     grid-row: 16/ 36;
   }
 
+  @media only screen and (min-width: 300px) and (max-width: 800px) {
+    grid-template-columns: repeat(2, 40%);
+    grid-template-rows: repeat(60, 3%);
+
+    li:nth-of-type(1) {
+      grid-row: 1/ 15;
+    }
+    li:nth-of-type(2) {
+      grid-row: 1/ 22;
+    }
+    li:nth-of-type(3) {
+      grid-row: 15/ 37;
+    }
+    li:nth-of-type(4) {
+      grid-row: 22/ 40;
+    }
+    li:nth-of-type(5) {
+      grid-row: 37/ 51;
+    }
+    li:nth-of-type(6) {
+      grid-row: 40/ 60;
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    grid-template-columns: repeat(1, 80%);
+    grid-template-rows: repeat(100, 3%);
+
+    li:nth-of-type(1) {
+      grid-row: 1/ 15;
+    }
+    li:nth-of-type(2) {
+      grid-row: 15/ 37;
+    }
+    li:nth-of-type(3) {
+      grid-row: 37/ 59;
+    }
+    li:nth-of-type(4) {
+      grid-row: 59/ 77;
+    }
+    li:nth-of-type(5) {
+      grid-row: 77/ 91;
+    }
+    li:nth-of-type(6) {
+      grid-row: 91/ 100;
+    }
+  }
 }
 
-.navbar {
-  position: relative;
+.navBar {
   display: flex;
   align-items: center;
   padding: 1rem;
   height: 25vh;
   z-index: 1;
   background: #f0f0f0;
-  
-  h2{
+
+  h2 {
     padding-left: 20%;
     font-size: 30px;
-    width:100%;
+    width: 100%;
 
-    span{
+    span {
       color: gray;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 0;
+      font-size: 20px;
     }
   }
 }
-
 </style>

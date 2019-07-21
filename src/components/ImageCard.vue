@@ -1,19 +1,27 @@
 <template>
-    <li class="image-card" v-on:click="onClick">
-      <img
-        :src="image.urls.small"
-        :alt="image.description"
-        v-on:load="imgLoaded"
-        v-show="loaded"
-        class="image-card__image"
-      />
-      <div class="image-card__body">
-        <p v-if="image.user.name" class="image-owner">{{image.user.name}}</p>
-        <p v-else class="image-owner">Unknown author</p>
-        <p v-if="image.user.location" class="image-location">{{image.user.location}}</p>
-        <p v-else class="image-location">unknown</p>
+  <li class="imageCard" v-on:click="onClick">
+    <img
+      :src="image.urls.small"
+      :alt="image.description"
+      v-on:load="imgLoaded"
+      v-show="loaded"
+      class="imageCardImg"
+    />
+    <div v-if="loaded" class="cardBody">
+      <div  class="detailCard">
+        <p v-if="image.user.name" class="name">{{image.user.name}}</p>
+        <p v-else class="name">Unknown author</p>
+        <p v-if="image.user.location" class="location">{{image.user.location}}</p>
+        <p v-else class="location">Location unspecified</p>
       </div>
-    </li>
+    </div>
+    <div v-else class="cardBodyLoading">
+      <div class="loadingDetail">
+        <p class="loadingName"></p>
+        <p class="loadingLocation"></p>
+      </div>
+    </div>
+  </li>
 </template>
 <script>
 export default {
@@ -31,36 +39,30 @@ export default {
     },
     imgLoaded() {
       this.loaded = true;
-      this.$emit('loaded',this.loaded);
+      this.$emit("loaded", this.loaded);
     }
   }
 };
 </script>
 <style lang="scss">
-.image-card {
+.imageCard {
   position: relative;
-  width:  100%;
-  margin: 0.5rem;
+  width: 100%;
+  margin: 0.5rem 0;
   display: inline-block;
   border-radius: 5px;
-  background-color: grey;
+  background-color: lightgrey;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  &:hover .image-card__image {
-    opacity: 0.9;
-  }
-  &:hover .image-card__body {
+  font-family: Helvetica, Arial, sans-serif;
+  &:hover .cardBody {
     opacity: 1;
-  }
-  &:empty {
-    display: block;
-    background-color: black;
   }
 
   @media only screen and (max-width: 549px) {
     width: 100%;
   }
 }
-.image-card__image {
+.imageCardImg {
   opacity: 1;
   z-index: 13;
   position: relative;
@@ -68,35 +70,74 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  img:empty{
-    background-color: purple;
-  }
-
-  &:empty {
-    display: block;
-  }
 }
-.image-card__body {
+.cardBody {
   position: absolute;
-  top: 80%;
+  display: flex;
+  text-transform: capitalize;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0) 42%);
+  top: 0%;
   opacity: 0;
   z-index: 1000;
   color: white;
+  .detailCard {
+    margin: 10px;
+    .name {
+      padding: 0;
+      margin: 0;
+      font-size: 15px;
+      text-transform: capitalize;
+    }
+    .location {
+      padding: 0;
+      margin: 0;
+      font-size: 10px;
+      text-transform: capitalize;
+    }
+  }
 }
-.image-title {
-  font-weight: bold;
+.cardBodyLoading {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  top: 0%;
+  opacity: 1;
+  z-index: 1000;
+  
+  .loadingDetail{
+  margin:10px;
+  width: 100%;
+}
+.loadingLocation {
+  height: 10px;
+  width: 40%;
   margin: 0;
+  animation: animationLoader 1s infinite ease-in-out;
 }
-.image-location,
-.image-owner {
-  margin: 0;
-  padding-left: 10px;
-  font-size: 0.8rem;
+.loadingName {
+  height: 15px;
+  width: 60%;
+  margin-bottom: 2px;
+  animation: animationLoader 1s infinite ease-in-out;
 }
-.image-title,
-.image-owner {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+}
+
+@keyframes animationLoader {
+  0% {
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+  50% {
+    background-color: rgba(61, 61, 61, 0.3);
+  }
+  100% {
+    background-color: rgba(15, 15, 15, 0.1);
+  }
 }
 </style>

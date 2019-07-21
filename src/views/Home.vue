@@ -1,23 +1,21 @@
 <template>
   <div class="divClass">
-    <nav class="navbar">
-      <form class="searchbar" @submit.prevent>
+    <nav class="navBar">
+      <form class="searchBar" @submit.prevent>
         <label>
-          <i>
-            <MagnifyIcon :size="16" />
-          </i>
+          <i><MagnifyIcon/></i>
           <input
             v-model="query"
             type="text"
             placeholder="Search for photo"
-            class="searchbar-input"
+            class="searchBarInput"
             v-on:keyup.enter="search"
           />
         </label>
       </form>
     </nav>
     <div class="wrapper">
-      <ul class="image-card-grid">
+      <ul class="imageCardGrid">
         <ImageCard
           v-for="image in images"
           v-on:clicked="onClickChild"
@@ -84,34 +82,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.divClass{
-  background-color: pink;
-}
-
-.wrapper {
-  position: absolute;
-  top: 18%;
-  width: 100%;
-  height: fit-content;
-  z-index: 1999;
- 
-}
-
-.divClass{
-  outline-offset: 0;
-}
-
-.navbar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  height: 25vh;
-  z-index: 1;
-  background: #f0f0f0;
-}
-.searchbar {
+.searchBar {
   width: 100%;
   display: flex;
   margin:0;
@@ -140,7 +111,7 @@ export default {
     }
   }
 }
-.searchbar-input {
+.searchBarInput {
   padding: 0.5rem 1rem;
   border-radius: 7px;
   font-size: 1rem;

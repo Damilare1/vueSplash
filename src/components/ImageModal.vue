@@ -3,12 +3,20 @@
     <div>
       <div class="overlay" @click="$emit('close')">
         <div class="modal">
-          <i></i>
-          <img :src="url" v-on:load="imgLoaded" v-show="loaded" />
-          <div>
-            <p>{{name}}</p>
-            <p>{{location}}</p>
+          <i class="clearButton">
+            <CloseIcon fillColor="white" :size="10" />
+          </i>
+          <div class="image">
+            <div v-if="!loaded" class="loadingPlaceholder" />
+            <img :src="url" v-on:load="imgLoaded" v-show="loaded" />
           </div>
+          <div class="details">
+            <p v-if="name" class="name">{{name}}</p>
+            <p v-else class="name">Author unknown</p>
+            <p v-if="location" class="location">{{location}}</p>
+            <p v-else class="location">Location unspecified</p>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -16,60 +24,90 @@
 </template>
 
 <script>
+import CloseIcon from "vue-material-design-icons/Close";
 
 export default {
-  
   name: "ImageModal",
   props: ["imageURL"],
-  data(){
+  components: {
+    CloseIcon
+  },
+  data() {
     return {
       loaded: false,
-      url: this.imageURL.urls.small,
+      url: this.imageURL.urls.regular,
       name: this.imageURL.user.name,
-      location: this.imageURL.user.location,
-    }
+      location: this.imageURL.user.location
+    };
   },
   methods: {
-
     imgLoaded() {
       this.loaded = true;
-    },
-  },
-
+    }
+  }
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
+.loadingPlaceholder {
+  width: 300px;
+  height: 300px;
+  animation: animationLoader 1s infinite ease-in-out;
+}
 .modal {
-  width: fit-content;
-  height: fit-content;
+  position: relative;
   margin: 0px auto;
+  width: fit-content;
+  max-height: 600px;
+  max-width: 400px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
+  pointer-events: none;
   box-shadow: 0 2px 8px 3px;
-  transition: all 0.2s ease-in;
+  transition: all 3s ease-in;
   font-family: Helvetica, Arial, sans-serif;
+  @media only screen and (max-width: 800px) {
+    max-height: 80%;
+    max-width: 80%;
+  }
+  .image {
+    border-radius: 10px 10px 0 0;
+    width: auto;
+    height: auto;
+    max-height: 90%;
+    max-width: 100%;
+    overflow: hidden;
+    transition: 4s all;
+  }
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
-.fadeIn-enter {
-  opacity: 0;
-}
-.fadeIn-leave-active {
-  opacity: 0;
-  transition: all 0.2s step-end;
+p {
+  padding: 0;
+  margin: 0;
 }
 
-.fadeIn-enter .modal,
-.fadeIn-leave-active.modal {
-  transform: scale(1.1);
+.name {
+  text-transform: capitalize;
 }
-button {
-  padding: 7px;
-  margin-top: 10px;
-  background-color: green;
-  color: white;
-  font-size: 1.1rem;
+.location {
+  font-size: 10px;
+  text-transform: capitalize;
+}
+.details {
+  margin: 10px;
 }
 
-img{
+.clearButton {
+  position: absolute;
+  left: 105%;
+  bottom: 100%;
+}
+
+img {
   width: 100%;
   height: 100%;
 }
@@ -81,6 +119,7 @@ img{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background: #00000094;
