@@ -63,8 +63,7 @@ export default {
         method: "get",
         url: "https://api.unsplash.com/search/photos/",
         params: {
-          client_id:
-            "4d46da2d74d993bb6e21e900bc8bec408fd46c87d294ddfcfc4ce153995a30a3",
+          client_id:process.env.VUE_APP_ClientId,
           query: queryParam,
           page: 1,
           per_page: 6,

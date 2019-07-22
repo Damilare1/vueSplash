@@ -58,8 +58,8 @@ export default {
   position: relative;
   margin: 0px auto;
   width: fit-content;
-  max-height: 600px;
-  max-width: 400px;
+  max-height: 700px;
+  max-width: 300px;
   background-color: #fff;
   border-radius: $radius;
   pointer-events: none;
@@ -74,7 +74,7 @@ export default {
     border-radius: $radius $radius 0 0;
     width: auto;
     height: auto;
-    max-height: 80%;
+    max-height: 90%;
     max-width: 100%;
     overflow: hidden;
     transition: 4s all;
@@ -102,10 +102,10 @@ p {
 
 .name {
   text-transform: capitalize;
-  font-size: $nameP;
+  font-size: $modalNameP;
 }
 .location {
-  font-size: $locationP;
+  font-size: $modalLocationP;
   text-transform: capitalize;
 }
 .details {
