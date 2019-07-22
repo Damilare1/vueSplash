@@ -77,11 +77,17 @@ export default {
     max-width: 100%;
     overflow: hidden;
     transition: 4s all;
-    @media only screen and (max-width: 500px){
+    @media only screen and (max-width: 500px) and(orient: portrait){
     max-height: 300px;
     max-width: 270px;
     overflow: hidden;
     }
+   @media only screen and (max-width: 700px) and(orient: landscape){
+    max-height: 60vh;
+    max-width: 54vh;
+    overflow: hidden;
+    }
+
   }
   img {
     width: auto;
