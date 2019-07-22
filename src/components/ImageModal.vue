@@ -83,8 +83,8 @@ export default {
     overflow: hidden;
     }
    @media only screen and (max-width: 700px) and(orient: landscape){
-    max-height: 40vh;
-    max-width: 54vh;
+    max-height: 200px;
+    max-width: 500px;
     overflow: hidden;
     }
 
