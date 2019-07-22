@@ -73,11 +73,11 @@ export default {
     border-radius: 10px 10px 0 0;
     width: auto;
     height: auto;
-    max-height: 90%;
+    max-height: 80%;
     max-width: 100%;
     overflow: hidden;
     transition: 4s all;
-    @media only screen and (max-width: 800px){
+    @media only screen and (max-width: 500px){
     max-height: 300px;
     max-width: 270px;
     overflow: hidden;
