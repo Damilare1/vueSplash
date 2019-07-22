@@ -16,6 +16,7 @@
             <p v-if="location" class="location">{{location}}</p>
             <p v-else class="location">Location unspecified</p>
           </div>
+          
         </div>
       </div>
     </div>
@@ -76,10 +77,11 @@ export default {
     max-width: 100%;
     overflow: hidden;
     transition: 4s all;
-  @media only screen and (max-width: 800px){
+    @media only screen and (max-width: 800px){
     max-height: 300px;
-    max-width: 200px;
+    max-width: 270px;
     overflow: hidden;
+    }
   }
   img {
     width: auto;
@@ -128,6 +130,5 @@ img {
   background: #00000094;
   z-index: 2999;
   transition: opacity 0.2s ease;
-}
 }
 </style>

@@ -3,7 +3,7 @@
     <nav class="navBar">
       <form class="searchBar" @submit.prevent>
         <label>
-          <i><MagnifyIcon/></i>
+          <i><MagnifyIcon fillColour="grey" :size="12"/></i>
           <input
             v-model="query"
             type="text"
