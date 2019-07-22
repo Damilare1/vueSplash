@@ -65,7 +65,7 @@ export default {
           client_id: process.env.VUE_APP_ClientId,
           query: queryParam,
           page: 1,
-          per_page: 6,
+          per_page: 8,
           order_by: "latest"
         }
       });

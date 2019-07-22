@@ -66,7 +66,7 @@ export default {
           client_id:process.env.VUE_APP_ClientId,
           query: queryParam,
           page: 1,
-          per_page: 6,
+          per_page: 8,
           order_by: "latest"
         }
       });
@@ -112,7 +112,7 @@ export default {
   height: 80vh;
   display: grid;
   grid-template-columns: repeat(3, 15%);
-  grid-template-rows: repeat(36, 3%);
+  grid-template-rows: repeat(50, 3%);
   grid-column-gap: 20px;
   row-gap: 0;
   li:nth-of-type(1) {
@@ -133,10 +133,16 @@ export default {
   li:nth-of-type(6) {
     grid-row: 16/ 36;
   }
+  li:nth-of-type(7) {
+    grid-row: 33/ 50;
+  }
+  li:nth-of-type(6) {
+    grid-row: 36/ 50;
+  }
 
   @media only screen and (min-width: $smallestDisplay) and (max-width: $averageDisplay) {
     grid-template-columns: repeat(2, 40%);
-    grid-template-rows: repeat(60, 3%);
+    grid-template-rows: repeat(70, 3%);
 
     li:nth-of-type(1) {
       grid-row: 1/ 15;
@@ -156,10 +162,16 @@ export default {
     li:nth-of-type(6) {
       grid-row: 40/ 60;
     }
+    li:nth-of-type(7) {
+      grid-row: 51/ 70;
+    }
+    li:nth-of-type(8) {
+      grid-row: 60/ 70;
+    }
   }
   @media only screen and (max-width: $smallestDisplay) {
     grid-template-columns: repeat(1, 80%);
-    grid-template-rows: repeat(100, 3%);
+    grid-template-rows: repeat(120, 3%);
 
     li:nth-of-type(1) {
       grid-row: 1/ 15;
@@ -178,6 +190,12 @@ export default {
     }
     li:nth-of-type(6) {
       grid-row: 91/ 100;
+    }
+        li:nth-of-type(7) {
+      grid-row: 100/ 110;
+    }
+        li:nth-of-type(8) {
+      grid-row: 110/ 120;
     }
   }
 }

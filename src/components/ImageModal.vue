@@ -8,7 +8,7 @@
           </i>
           <div class="image">
             <div v-if="!loaded" class="loadingPlaceholder" />
-            <img :src="url" v-on:load="imgLoaded" v-show="loaded" />
+            <img :src="url" v-on:load="imgLoaded" :alt="description" v-show="loaded" />
           </div>
           <div class="details">
             <p v-if="name" class="name">{{name}}</p>
@@ -37,7 +37,8 @@ export default {
       loaded: false,
       url: this.imageURL.urls.regular,
       name: this.imageURL.user.name,
-      location: this.imageURL.user.location
+      location: this.imageURL.user.location,
+      description: this.imageURL.description
     };
   },
   methods: {
