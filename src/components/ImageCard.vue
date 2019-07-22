@@ -55,9 +55,6 @@ export default {
   background-color: lightgrey;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   font-family: Helvetica, Arial, sans-serif;
-  &:hover .cardBody {
-    opacity: 1;
-  }
 
   @media only screen and (max-width: 549px) {
     width: 100%;
@@ -82,7 +79,7 @@ export default {
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0) 42%);
   top: 0%;
-  opacity: 0;
+  opacity: 1;
   z-index: 1000;
   color: white;
   .detailCard {
