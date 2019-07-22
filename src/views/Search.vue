@@ -83,6 +83,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "../utilities/variables";
 .rootClass {
   position: relative;
   height: 100%;
@@ -97,7 +98,7 @@ export default {
   justify-content: center;
   height: fit-content;
   z-index: 1999;
-  @media only screen and (max-width: 799px) {
+  @media only screen and (max-width: $averageDisplay) {
     max-width: 100%;
     margin: 0;
   }
@@ -134,7 +135,7 @@ export default {
     grid-row: 16/ 36;
   }
 
-  @media only screen and (min-width: 300px) and (max-width: 800px) {
+  @media only screen and (min-width: $smallestDisplay) and (max-width: $averageDisplay) {
     grid-template-columns: repeat(2, 40%);
     grid-template-rows: repeat(60, 3%);
 
@@ -157,7 +158,7 @@ export default {
       grid-row: 40/ 60;
     }
   }
-  @media only screen and (max-width: 300px) {
+  @media only screen and (max-width: $smallestDisplay) {
     grid-template-columns: repeat(1, 80%);
     grid-template-rows: repeat(100, 3%);
 
@@ -192,15 +193,15 @@ export default {
 
   h2 {
     padding-left: 20%;
-    font-size: 30px;
+    font-size: $header;
     width: 100%;
 
     span {
       color: gray;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: $smallDisplay) {
       padding: 0;
-      font-size: 20px;
+      font-size: $span;
     }
   }
 }

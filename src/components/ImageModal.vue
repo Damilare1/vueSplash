@@ -48,6 +48,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import "../utilities/variables";
 .loadingPlaceholder {
   width: 300px;
   height: 300px;
@@ -60,28 +61,28 @@ export default {
   max-height: 600px;
   max-width: 400px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: $radius;
   pointer-events: none;
   box-shadow: 0 2px 8px 3px;
   transition: all 3s ease-in;
   font-family: Helvetica, Arial, sans-serif;
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: $averageDisplay) {
     max-height: 80%;
     max-width: 80%;
   }
   .image {
-    border-radius: 10px 10px 0 0;
+    border-radius: $radius $radius 0 0;
     width: auto;
     height: auto;
     max-height: 80%;
     max-width: 100%;
     overflow: hidden;
     transition: 4s all;
-    @media only screen and (max-width: 500px) and(orientation: portrait){
+    @media only screen and (max-width: $smallDisplay) and(orientation: portrait){
     max-height: 300px;
     max-width: 270px;
     }
-   @media only screen and (max-width: 700px) and(orientation: landscape){
+   @media only screen and (max-width: $averageDisplay) and(orientation: landscape){
     max-height: 200px;
     max-width: 500px;
     }
@@ -101,9 +102,10 @@ p {
 
 .name {
   text-transform: capitalize;
+  font-size: $nameP;
 }
 .location {
-  font-size: 10px;
+  font-size: $locationP;
   text-transform: capitalize;
 }
 .details {
@@ -114,11 +116,6 @@ p {
   position: absolute;
   left: 105%;
   bottom: 100%;
-}
-
-img {
-  width: 100%;
-  height: 100%;
 }
 
 .overlay {
@@ -133,6 +130,26 @@ img {
   height: 100%;
   background: #00000094;
   z-index: 2999;
-  transition: opacity 0.2s ease;
+  transition: blowUpModal 1s ease;
 }
+@keyframes blowUpModal {
+  0% {
+    transform:scale(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
+
+@keyframes blowUpModalTwo {
+  0% {
+    transform:scale(1);
+    opacity:1;
+  }
+  100% {
+    transform:scale(0);
+    opacity:0;
+  }
+}
+
 </style>

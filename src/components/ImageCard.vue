@@ -45,12 +45,13 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "../utilities/variables";
 .imageCard {
   position: relative;
   width: 100%;
   margin: 0.5rem 0;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: $cardRadius;
   background-color: lightgrey;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   font-family: Helvetica, Arial, sans-serif;
@@ -66,7 +67,7 @@ export default {
   opacity: 1;
   z-index: 13;
   position: relative;
-  border-radius: 5px;
+  border-radius: $cardRadius;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -89,13 +90,13 @@ export default {
     .name {
       padding: 0;
       margin: 0;
-      font-size: 15px;
+      font-size: $nameP;
       text-transform: capitalize;
     }
     .location {
       padding: 0;
       margin: 0;
-      font-size: 10px;
+      font-size: $locationP;
       text-transform: capitalize;
     }
   }

@@ -62,8 +62,7 @@ export default {
         method: "get",
         url: "https://api.unsplash.com/search/photos/",
         params: {
-          client_id:
-            "4d46da2d74d993bb6e21e900bc8bec408fd46c87d294ddfcfc4ce153995a30a3",
+          client_id: process.env.VUE_APP_ClientId,
           query: queryParam,
           page: 1,
           per_page: 6,
@@ -82,6 +81,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "../utilities/variables";
 .searchBar {
   width: 100%;
   display: flex;
@@ -97,14 +97,13 @@ export default {
       position: absolute;
       margin-left: 10px;
       margin-top: 1px;
-      font-size: 2px;
     }
     input {
       width:100%;
       padding-left: 40px;
     }
   }
-  @media only screen and (max-width: 549px) {
+  @media only screen and (max-width: $smallDisplay) {
     width: 100%;
     label {
       width: 80%;
@@ -122,7 +121,7 @@ export default {
     border-color: grey;
     outline: none;
   }
-  @media only screen and (max-width: 549px) {
+  @media only screen and (max-width: $smallDisplay) {
     min-width: 0;
     width: 100%;
   }
