@@ -71,6 +71,7 @@ export default {
 }
 .cardBody {
   position: absolute;
+  border-radius: $cardRadius;
   display: flex;
   text-transform: capitalize;
   align-items: flex-end;
