@@ -33,17 +33,17 @@ import Modal from "@/components/ImageModal";
 
 export default {
   name: "home",
+  props: ["query"],
   components: {
     ImageCard,
     Modal
   },
   data() {
     return {
-      query: "",
       images: [],
       loading: false,
       imgLoaded: false,
-      searchItem: this.$route.params.searchItem,
+      searchItem: this.query,
       modal: ""
     };
   },

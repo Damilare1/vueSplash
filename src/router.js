@@ -15,9 +15,10 @@ export default new Router({
       component: Home
     },
     {
-      path: "/:searchItem",
+      path: "/search",
       name: "search",
-      component: Search
+      component: Search,
+      props: (route) => ({ query: route.query.q })
     }
   ]
 });

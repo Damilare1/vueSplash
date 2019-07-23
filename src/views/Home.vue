@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     search() {
-      this.$router.push("/" + this.query);
+      this.$router.push("/search?q=" + this.query);
     },
     onClickChild(value) {
       this.modal = value;
