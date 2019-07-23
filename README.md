@@ -1,4 +1,4 @@
-# vue-flickr
+# vue-unSplash
 
 ## Project setup
 ```

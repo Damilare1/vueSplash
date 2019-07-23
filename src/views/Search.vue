@@ -136,7 +136,7 @@ export default {
   li:nth-of-type(7) {
     grid-row: 33/ 50;
   }
-  li:nth-of-type(6) {
+  li:nth-of-type(8) {
     grid-row: 36/ 50;
   }
 
